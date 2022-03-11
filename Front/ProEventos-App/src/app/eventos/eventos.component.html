@@ -13,7 +13,8 @@
     <tr>
       <th class="text-left">
         <button class="btn btn-sm btn-outline-light" (click)="exibirImagem()">
-          {{!exibirImg ? 'Exibir' : 'Ocultar'}}
+          <i class="{{!exibirImg ? 'fa fa-eye' : 'fa fa-eye-slash'}}"></i>
+
         </button>
       </th>
       <th>#</th>
@@ -27,22 +28,22 @@
   </thead>
 
   <tbody class="text-center" *ngIf="eventos && eventos.length">
-    <tr *ngFor="let item of eventosFiltrados">
+    <tr *ngFor="let evento of eventosFiltrados">
       <td>
-        <img [collapse]="!exibirImg" [isAnimated]="true" src="/assets/{{item.imagemUrl}}" [style.width.px]="largImg"
+        <img [collapse]="!exibirImg" [isAnimated]="true" src="/assets/{{evento.imagemUrl}}" [style.width.px]="largImg"
           [style.height.px]="altImg" [style.margin.px]="margemImg">
       </td>
-      <td>{{ item.eventoId }}</td>
-      <td>{{ item.tema }}</td>
-      <td>{{ item.local }}</td>
-      <td>{{ item.dataEvento }}</td>
-      <td>{{ item.qtdPessoas }}</td>
-      <td>{{ item.lote }}</td>
+      <td>{{ evento.id }}</td>
+      <td>{{ evento.tema }}</td>
+      <td>{{ evento.local }}</td>
+      <td>{{ evento.dataEvento  | DateFormatPipe}}</td>
+      <td>{{ evento.qtdPessoas }}</td>
+      <td>{{ evento.lotes[0].nome }}</td>
       <td>
-        <button class="btn btn-sm btn-primary mr-2">
-          <i class="fa fa-pen"></i>
+        <button class="btn btn-sm btn-primary mr-2" tooltip="Editar">
+          <i class="fa fa-edit"></i>
         </button>
-        <button class="btn btn-sm btn-danger">
+        <button class="btn btn-sm btn-danger" tooltip="Excluir" (click)="openModal(template)">
           <i class="fa fa-trash"></i>
         </button>
       </td>
@@ -56,3 +57,11 @@
     </tr>
   </tfoot>
 </table>
+
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Deseja realmente excluir o evento?</p>
+    <button type="button" class="btn btn-default" (click)="confirm()" >Sim</button>
+    <button type="button" class="btn btn-primary" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
