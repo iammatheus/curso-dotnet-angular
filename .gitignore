@@ -31,6 +31,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+Resources/
+cache/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -494,3 +496,4 @@ Thumbs.db
 *.db
 *.db-shm
 *.db-wal
+Front/ProEventos-App/.angular/cache/13.2.6/angular-webpack/25f9ed032c6aa10ac77191e68db14760475702c1/0.pack
