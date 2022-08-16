@@ -39,6 +39,7 @@ import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 import { AccountService } from './services/account.service';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { HomeComponent } from './components/home/home.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 defineLocale('pt-br', ptBrLocale);
 @NgModule({
@@ -68,6 +69,7 @@ defineLocale('pt-br', ptBrLocale);
     TooltipModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    PaginationModule.forRoot(),
     ModalModule.forRoot(),
     NgxSpinnerModule,
     ToastrModule.forRoot({
